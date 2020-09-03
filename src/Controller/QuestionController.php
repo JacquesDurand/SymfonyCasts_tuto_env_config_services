@@ -33,11 +33,13 @@ class QuestionController extends AbstractController
      */
     public function show($slug, MarkdownParserInterface $markdownParser, CacheInterface $cache)
     {
-        $questionText = 'I\'ve been turned into a cat, any *thoughts* on how to turn back? While I\'m **adorable**, I don\'t really care for cat food.' ;
+        $questionText = 'I\'ve been turned into a **cat**, any *thoughts* on how to turn back? While I\'m **adorable**, I don\'t really care for cat food.';
 
-        $parsedQuestion = $cache->get('mardown_'.md5($questionText), function () use ($questionText,$markdownParser) {
+        $parsedQuestion = $cache->get('mardown_' . md5($questionText), function () use ($questionText, $markdownParser) {
             return $markdownParser->transformMarkdown($questionText);
-        }) ;
+        });
+
+
         $answers = [
             'Make sure your cat is sitting `purrrfectly` still 🤣',
             'Honestly, I like furry shoes better than MY cat',
