@@ -36,7 +36,6 @@ class QuestionController extends AbstractController
         $questionText = 'I\'ve been turned into a **cat**, any *thoughts* on how to turn back? While I\'m **adorable**, I don\'t really care for cat food.';
 
         $parsedQuestion = $markdownHelper->parse($questionText);
-
         $answers = [
             'Make sure your cat is sitting `purrrfectly` still 🤣',
             'Honestly, I like furry shoes better than MY cat',
