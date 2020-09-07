@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\MarkdownHelper;
+use Sentry\State\HubInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,6 +34,7 @@ class QuestionController extends AbstractController
      */
     public function show($slug, MarkdownHelper $markdownHelper)
     {
+
         $questionText = 'I\'ve been turned into a **cat**, any *thoughts* on how to turn back? While I\'m **adorable**, I don\'t really care for cat food.';
 
         $parsedQuestion = $markdownHelper->parse($questionText);
