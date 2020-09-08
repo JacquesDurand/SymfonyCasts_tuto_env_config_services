@@ -71,23 +71,11 @@ EOF
     /**
      * @Route("/questions/{slug}", name="app_question_show")
      * @param $slug
-     * @param MarkdownHelper $markdownHelper
      * @return Response
      */
-    public function show($slug, MarkdownHelper $markdownHelper, EntityManagerInterface $entityManager)
+    public function show(Question $question)
     {
-        $repository = $entityManager->getRepository(Question::class);
-
-        /** @var Question|null $question */
-        $question = $repository->findOneBy([
-            'slug' => $slug
-        ]);
-
-        if (!$question) {
-            throw $this->createNotFoundException(sprintf('No slug found for %s', $slug));
-        }
-
-
+        
         $answers = [
             'Make sure your cat is sitting `purrrfectly` still 🤣',
             'Honestly, I like furry shoes better than MY cat',
