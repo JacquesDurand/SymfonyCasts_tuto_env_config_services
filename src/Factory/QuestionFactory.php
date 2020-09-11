@@ -26,19 +26,18 @@ final class QuestionFactory extends ModelFactory
 
             'name' => self::faker()->realText(50),
             'question' => self::faker()->paragraphs(
-                self::faker()->numberBetween(1,4),
+                self::faker()->numberBetween(1, 4),
                 true
             ),
-            'askedAt' => self::faker()->dateTimeBetween('-100 days', '-1 minute') ,
+            'askedAt' => self::faker()->dateTimeBetween('-100 days', '-1 minute'),
             'votes' => rand(-20, 50)
         ];
 
 
-
-
     }
 
-    public function unPublished() :self {
+    public function unPublished(): self
+    {
 
         return $this->addState([
             'askedAt' => null
@@ -48,14 +47,15 @@ final class QuestionFactory extends ModelFactory
     protected function initialize(): self
     {
         // see https://github.com/zenstruck/foundry#initialization
-        return $this->afterInstantiate(function(Question $question) {
+//        return $this->afterInstantiate(function (Question $question) {
+//
+//            if (!$question->getSlug()) {
+//                $slugger = new AsciiSlugger();
+//                $question->setSlug($slugger->slug($question->getName()));
+//            }
+//        });
 
-            if (!$question->getSlug()) {
-                $slugger = new AsciiSlugger();
-                $question->setSlug($slugger->slug($question->getName()));
-            }
-        })
-            ;
+        return $this ;
     }
 
     protected static function getClass(): string
